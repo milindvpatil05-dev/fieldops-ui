@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # react-native-fieldops-ui
 
 fieldops-ui: A composable, token-driven UI kit for React Native, shipping Button, Text, TextField, Select, and Badge.
@@ -36,7 +35,3 @@ MIT
 ---
 
 Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
-=======
-# fieldops-ui
-fieldops-ui: A composable, token-driven UI kit for React Native, shipping Button, Text, TextField, Select, and Badge.
->>>>>>> origin/main

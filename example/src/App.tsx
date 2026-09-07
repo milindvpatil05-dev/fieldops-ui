@@ -1,20 +1,43 @@
-import { Text, View, StyleSheet } from 'react-native';
-import { multiply } from 'react-native-fieldops-ui';
+import React from 'react';
+import { View } from 'react-native';
 
-const result = multiply(3, 7);
+// Import only the components you want to test
+import { Button, Text, TextField, Select, Badge } from '../../src/components'; // Adjust the import path as needed
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <View className="p-4 space-y-8" style={{ alignItems: 'flex-start' }}>
+        <Text variant="title" style={{ marginVertical: 10 }}>
+          FieldOps UI Demo
+        </Text>
+
+        <TextField
+          label="Username"
+          placeholder="Enter your name"
+          helperText="This field is required"
+          style={{ marginVertical: 10 }}
+        />
+
+        <Select
+          options={[
+            { label: 'Option A', value: 'a' },
+            { label: 'Option B', value: 'b' },
+            { label: 'Option C', value: 'c' },
+          ]}
+          placeholder="Choose an option"
+          style={{ marginVertical: 10 }}
+          onChange={(val) => console.log('Selected:', val)}
+        />
+
+        <Badge
+          status="in-progress"
+          label="Working…"
+          style={{ marginVertical: 10 }}
+        />
+
+        <Button label="Save" style={{ marginVertical: 10 }} />
+      </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

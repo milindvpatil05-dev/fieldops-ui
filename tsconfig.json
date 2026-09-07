@@ -1,31 +1,60 @@
+// {
+//   "compilerOptions": {
+//     "rootDir": ".",
+//     "paths": {
+//       "react-native-fieldops-ui": ["./src/index"]
+//     },
+//     "allowUnreachableCode": false,
+//     "allowUnusedLabels": false,
+//     "customConditions": [
+//       "react-native-fieldops-ui-source",
+//       "react-native-strict-api"
+//     ],
+//     "esModuleInterop": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "jsx": "react-jsx",
+//     "lib": ["ESNext"],
+//     "module": "ESNext",
+//     "moduleResolution": "bundler",
+//     "noEmit": true,
+//     "noFallthroughCasesInSwitch": true,
+//     "noImplicitReturns": true,
+//     "noUncheckedIndexedAccess": true,
+//     "noUnusedLocals": true,
+//     "noUnusedParameters": true,
+//     "resolveJsonModule": true,
+//     "skipLibCheck": true,
+//     "strict": true,
+//     "target": "ESNext",
+//     "verbatimModuleSyntax": true
+//   },
+//   "include": ["src",  "src/types", "example/src"],
+// }
+
+
 {
   "compilerOptions": {
-    "rootDir": ".",
-    "paths": {
-      "react-native-fieldops-ui": ["./src/index"]
-    },
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
-    "customConditions": [
-      "react-native-fieldops-ui-source",
-      "react-native-strict-api"
-    ],
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "jsx": "react-jsx",
-    "lib": ["ESNext"],
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "noEmit": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
+    "target": "esnext",
+    "module": "esnext",
+    "jsx": "react",
     "strict": true,
-    "target": "ESNext",
-    "verbatimModuleSyntax": true
-  }
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
+    "types": ["nativewind/types"]
+  },
+  "include": [
+    "src",
+    "src/types",
+    "example/src"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib"
+  ]
 }
