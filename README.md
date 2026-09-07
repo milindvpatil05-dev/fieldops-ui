@@ -13,12 +13,53 @@ npm install react-native-fieldops-ui
 ## Usage
 
 
-```js
-import { multiply } from 'react-native-fieldops-ui';
+```Button
+import { Button } from "fieldops-ui";
 
-// ...
+<Button
+  label="Submit"
+  variant="primary"
+  size="md"
+  onPress={() => console.log("Clicked")}
+/>
+```
 
-const result = multiply(3, 7);
+```Text
+import { Text } from "fieldops-ui";
+
+<Text variant="heading">Hello World</Text>
+```
+
+```TextField
+import { TextField } from "fieldops-ui";
+
+<TextField
+  label="Email"
+  placeholder="Enter your email"
+  value={email}
+  onChange={setEmail}
+  helperText="We’ll never share your email."
+/>
+```
+
+```Select
+import { Select } from "fieldops-ui";
+
+<Select
+  options={[
+    { label: "Option A", value: "a" },
+    { label: "Option B", value: "b" }
+  ]}
+  value={selected}
+  onChange={setSelected}
+  placeholder="Choose one"
+/>
+```
+
+```Badge
+import { Badge } from "fieldops-ui";
+
+<Badge status="in-progress" label="Working" />
 ```
 
 
