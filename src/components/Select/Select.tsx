@@ -3,29 +3,16 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import clsx from 'clsx';
 import { type SelectProps } from './Select.types';
 import { colors } from '../../theme/colors';
-import { radius } from '../../theme/radius';
-
-const selectStyles = {
-  trigger: {
-    paddingRight: 28,
-    height: 42,
-  },
-  icon: {
-    position: 'absolute' as const,
-    right: 8,
-    top: 10,
-    fontSize: 16,
-    lineHeight: 16,
-    color: colors['fg-muted'],
-  },
-};
-
-const selectMetrics = {
-  characterWidth: 8,
-  horizontalPadding: 24,
-  iconWidth: 16,
-  iconGap: 8,
-};
+import {
+  selectBase,
+  selectBorderColor,
+  selectTriggerStyle,
+  selectIconStyle,
+  selectMetrics,
+  selectDropdownStyle,
+  selectOptionStyle,
+  selectErrorTextStyle,
+} from '../../theme/select';
 
 export const Select: React.FC<SelectProps> = ({
   options,
@@ -57,7 +44,7 @@ export const Select: React.FC<SelectProps> = ({
   }, [value]);
 
   const merged = clsx(
-    'border rounded-md px-3 py-2',
+    selectBase,
     error ? 'border-danger' : 'border-border',
     className
   );
@@ -74,12 +61,10 @@ export const Select: React.FC<SelectProps> = ({
         className={merged}
         style={{
           width: dropdownWidth,
-          borderWidth: 1,
-          borderColor: error ? colors.danger : colors.border,
-          borderRadius: radius.md,
-          paddingHorizontal: 12,
-          paddingVertical: 8,
-          ...selectStyles.trigger,
+          borderColor: error
+            ? selectBorderColor.error
+            : selectBorderColor.default,
+          ...selectTriggerStyle,
           ...style,
         }}
         onPress={() => setIsOpen((open) => !open)}
@@ -92,7 +77,7 @@ export const Select: React.FC<SelectProps> = ({
         >
           {selectedOption?.label ?? placeholder ?? 'Select an option'}
         </Text>
-        <Text accessibilityLabel="Open options" style={selectStyles.icon}>
+        <Text accessibilityLabel="Open options" style={selectIconStyle}>
           {isOpen ? '⌃' : '⌄'}
         </Text>
       </TouchableOpacity>
@@ -100,18 +85,14 @@ export const Select: React.FC<SelectProps> = ({
         <View
           style={{
             width: dropdownWidth,
-            marginTop: 4,
-            borderWidth: 1,
-            borderColor: colors.border,
-            borderRadius: radius.md,
-            backgroundColor: colors.bg,
+            ...selectDropdownStyle,
           }}
         >
           {options.map((item) => (
             <TouchableOpacity
               key={item.value}
               onPress={() => selectOption(item.value)}
-              style={{ paddingHorizontal: 12, paddingVertical: 10 }}
+              style={selectOptionStyle}
             >
               <Text
                 style={{
@@ -125,9 +106,7 @@ export const Select: React.FC<SelectProps> = ({
           ))}
         </View>
       )}
-      {error && (
-        <Text style={{ color: colors.danger, marginTop: 4 }}>Error</Text>
-      )}
+      {error && <Text style={selectErrorTextStyle}>Error</Text>}
     </View>
   );
 };

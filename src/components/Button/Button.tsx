@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text, ActivityIndicator } from 'react-native';
+import { TouchableOpacity, Text, ActivityIndicator, View } from 'react-native';
 import clsx from 'clsx';
 import { type ButtonProps } from './Button.types';
 import {
@@ -11,6 +11,8 @@ import {
   buttonBaseStyle,
   buttonSizeStyles,
   buttonTextSizeStyles,
+  buttonIconSpacing,
+  buttonDisabledOpacity,
 } from '../../theme/button';
 import { colors } from '../../theme/colors';
 
@@ -46,7 +48,7 @@ export const Button: React.FC<ButtonProps> = ({
         buttonBaseStyle,
         buttonSizeStyles[size],
         buttonVariantStyles[variant],
-        disabled && { opacity: 0.5 },
+        disabled && { opacity: buttonDisabledOpacity },
         style,
       ]}
       disabled={disabled || loading}
@@ -56,16 +58,26 @@ export const Button: React.FC<ButtonProps> = ({
         <ActivityIndicator color={textColor} />
       ) : (
         <>
-          {leadingIcon}
+          {leadingIcon ? (
+            <React.Fragment>
+              <View
+                testID="button-leading-icon"
+                style={
+                  leadingIcon ? { marginRight: buttonIconSpacing } : undefined
+                }
+              >
+                {leadingIcon}
+              </View>
+            </React.Fragment>
+          ) : null}
           <Text
             className={clsx(
-              'ml-2',
               buttonTextVariants[variant],
               buttonSizes[size].match(/text-\w+/)?.[0]
             )}
             style={[
               buttonTextSizeStyles[size],
-              { color: textColor },
+              { color: textColor, textAlign: 'center' },
               textStyle,
             ]}
           >
