@@ -1,3 +1,7 @@
+import { colors } from './colors';
+import { radius } from './radius';
+import { spacing } from './spacing';
+
 export const buttonBase = 'rounded-md flex-row items-center justify-center';
 
 export const buttonSizes = {
@@ -21,27 +25,27 @@ export const buttonTextVariants = {
 };
 
 export const buttonVariantStyles = {
-  primary: { backgroundColor: '#1D4ED8' },
+  primary: { backgroundColor: colors.primary },
   secondary: {
-    backgroundColor: '#F6F7F9',
+    backgroundColor: colors.surface,
     borderWidth: 1,
-    borderColor: '#E3E6EA',
+    borderColor: colors.border,
   },
   ghost: { backgroundColor: 'transparent' },
-  destructive: { backgroundColor: '#DC2626' },
+  destructive: { backgroundColor: colors.danger },
 };
 
 export const buttonBaseStyle = {
-  borderRadius: 10,
+  borderRadius: radius.md,
   flexDirection: 'row' as const,
   alignItems: 'center' as const,
   justifyContent: 'center' as const,
 };
 
 export const buttonSizeStyles = {
-  sm: { paddingHorizontal: 12, paddingVertical: 8 },
-  md: { paddingHorizontal: 16, paddingVertical: 12 },
-  lg: { paddingHorizontal: 20, paddingVertical: 16 },
+  sm: { paddingHorizontal: spacing[3], paddingVertical: spacing[2] },
+  md: { paddingHorizontal: spacing[4], paddingVertical: spacing[3] },
+  lg: { paddingHorizontal: 20, paddingVertical: spacing[4] },
 };
 
 export const buttonTextSizeStyles = {
@@ -49,3 +53,7 @@ export const buttonTextSizeStyles = {
   md: { fontSize: 16 },
   lg: { fontSize: 18 },
 };
+
+export const buttonIconSpacing = spacing[2];
+
+export const buttonDisabledOpacity = 0.5;

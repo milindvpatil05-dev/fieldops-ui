@@ -3,9 +3,11 @@ import { TextInput, View } from 'react-native';
 import clsx from 'clsx';
 import { type TextFieldProps } from './TextField.types';
 import { Text } from '../Text';
-import { colors } from '../../theme/colors';
-import { radius } from '../../theme/radius';
-import { spacing } from '../../theme';
+import {
+  textFieldBase,
+  textFieldBaseStyle,
+  textFieldBorderColor,
+} from '../../theme/textField';
 
 export const TextField: React.FC<TextFieldProps> = ({
   label,
@@ -22,21 +24,24 @@ export const TextField: React.FC<TextFieldProps> = ({
   ...rest
 }) => {
   const merged = clsx(
-    'border rounded-md px-3 py-2',
+    textFieldBase,
     error ? 'border-danger' : 'border-border',
     className
   );
   const inputStyle = {
-    borderWidth: 1,
-    borderColor: error ? colors.danger : colors.border,
-    borderRadius: radius.md,
-    paddingHorizontal: spacing[3],
-    paddingVertical: spacing[2],
+    ...textFieldBaseStyle,
+    borderColor: error
+      ? textFieldBorderColor.error
+      : textFieldBorderColor.default,
   };
 
   return (
     <View style={style}>
-      {label && <Text className="text-label mb-1">{label}</Text>}
+      {label && (
+        <Text className="text-label mb-1" variant="label">
+          {label}
+        </Text>
+      )}
       <View className="flex-row items-center">
         <TextInput
           className={merged}

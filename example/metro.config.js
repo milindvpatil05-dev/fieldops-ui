@@ -31,4 +31,4 @@ const config = withMetroConfig(getDefaultConfig(__dirname), {
   conditions: ['react-native-fieldops-ui-source'],
 });
 
-module.exports = withNativeWind(config);
+module.exports = withNativeWind(config, { input: './global.css' });
