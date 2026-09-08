@@ -32,6 +32,7 @@ module.exports = {
     'text-primary',
     'text-danger',
     'text-success',
+    'text-warning',
   ],
   plugins: [],
 };
