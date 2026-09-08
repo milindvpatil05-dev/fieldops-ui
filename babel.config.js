@@ -3,22 +3,10 @@ module.exports = function (api) {
 
   return {
     presets: [
-      // Bob preset for building your library
-      'module:react-native-builder-bob/babel-preset',
-      // React Native preset for node_modules
-      '@babel/preset-env',
+      // React Native preset (handles TS + JSX); used for both src and node_modules
       'module:@react-native/babel-preset',
+      // NativeWind preset
       'nativewind/babel',
-    ],
-    overrides: [
-      {
-        exclude: /\/node_modules\//,
-        presets: ['module:react-native-builder-bob/babel-preset'],
-      },
-      {
-        include: /\/node_modules\//,
-        presets: ['module:@react-native/babel-preset'],
-      },
     ],
   };
 };
